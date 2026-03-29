@@ -1,0 +1,33 @@
+.testimonials {
+  padding: 6rem 0;
+  border-top: 1px solid #cccccc;
+}
+.testimonials .list {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.testimonials .item {
+  margin: 0;
+  padding: 2rem;
+  border-radius: 18px;
+  border: 1px solid #cccccc;
+  background: #000000;
+}
+.testimonials .item blockquote {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #ffffff;
+}
+.testimonials .item figcaption {
+  margin-top: 1rem;
+  color: #cccccc;
+  font-size: 0.875rem;
+}
+@media (max-width: 900px) {
+  .testimonials .list {
+    grid-template-columns: 1fr;
+  }
+}/*# sourceMappingURL=Testimonials.module.css.map */

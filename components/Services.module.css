@@ -1,0 +1,30 @@
+.services {
+  padding: 6rem 0;
+}
+.services .cards {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.services .card {
+  padding: 2rem;
+  border: 1px solid #cccccc;
+  border-radius: 18px;
+  background: #000000;
+}
+.services .card h3 {
+  margin: 0;
+  font-size: 1.375rem;
+  letter-spacing: -0.01em;
+}
+.services .card p {
+  margin: 1rem 0 0;
+  color: #cccccc;
+  line-height: 1.7;
+}
+@media (max-width: 900px) {
+  .services .cards {
+    grid-template-columns: 1fr;
+  }
+}/*# sourceMappingURL=Services.module.css.map */

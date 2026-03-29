@@ -1,8 +1,8 @@
 @use "../styles/variables" as *;
 
 .hero {
-  padding: 0 0 6rem;
-  scroll-margin-top: 6.25rem;
+  padding: var(--header-offset) 0 6rem;
+  scroll-margin-top: calc(var(--header-offset) + 1rem);
   $hero-content-top: 6.25rem;
 
   .layout {
@@ -199,7 +199,7 @@
   }
 
   @media (max-width: 768px) {
-    padding: 0 0 4rem;
+    padding: var(--header-offset) 0 4rem;
 
     .layout {
       grid-template-columns: 1fr;

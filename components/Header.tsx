@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import styles from "./Header.module.scss";
 
 const navItems = [
@@ -9,35 +12,38 @@ const navItems = [
 ];
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
-    <header className={styles.header}>
+    <header
+      className={`${styles.header} ${isMenuOpen ? styles.headerMenuOpen : ""}`}
+    >
       <div className="container">
         <div className={styles.inner}>
-          <a href="#hero" className={styles.brand}>
+          <a
+            href="#hero"
+            className={styles.brand}
+            onClick={closeMenu}
+          >
             <span className={styles.icon} aria-hidden="true">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                role="presentation"
-              >
-                <path
-                  d="M4 8.5C4 7.4 4.9 6.5 6 6.5H8.2L9.3 5.2C9.7 4.7 10.3 4.5 10.9 4.5H13.1C13.7 4.5 14.3 4.7 14.7 5.2L15.8 6.5H18C19.1 6.5 20 7.4 20 8.5V17.5C20 18.6 19.1 19.5 18 19.5H6C4.9 19.5 4 18.6 4 17.5V8.5Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                />
-                <circle
-                  cx="12"
-                  cy="13"
-                  r="3.2"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                />
-              </svg>
+              <img
+                src="/icon.avif"
+                alt=""
+                className={styles.iconImage}
+              />
             </span>
-            <span className={styles.name}>MATEJ ČERVENKA</span>
+            <h1 className={styles.name}>MATEJ ČERVENKA</h1>
           </a>
 
-          <nav className={styles.nav} aria-label="Hlavná navigácia">
+          <nav className={styles.desktopNav} aria-label="Hlavná navigácia">
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -48,8 +54,40 @@ export default function Header() {
               </a>
             ))}
           </nav>
+
+          <button
+            type="button"
+            className={`${styles.menuButton} ${isMenuOpen ? styles.menuButtonOpen : ""}`}
+            aria-label={isMenuOpen ? "Zavrieť menu" : "Otvoriť menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-nav"
+            onClick={toggleMenu}
+          >
+            <span className={styles.menuBar} />
+            <span className={styles.menuBar} />
+            <span className={styles.menuBar} />
+          </button>
         </div>
       </div>
+
+      <nav
+        id="mobile-nav"
+        className={`${styles.mobileNav} ${isMenuOpen ? styles.mobileNavOpen : ""}`}
+        aria-label="Mobilná navigácia"
+      >
+        <div className={`container ${styles.mobileNavInner}`}>
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className={styles.mobileLink}
+              onClick={closeMenu}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </nav>
     </header>
   );
 }

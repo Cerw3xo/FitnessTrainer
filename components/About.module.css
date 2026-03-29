@@ -1,0 +1,24 @@
+.about {
+  padding: 6rem 0;
+  border-top: 1px solid #cccccc;
+}
+.about .grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 4rem;
+}
+.about .grid .text {
+  margin: 0;
+  color: #cccccc;
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+@media (max-width: 900px) {
+  .about .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .about .grid .text {
+    font-size: 1rem;
+  }
+}/*# sourceMappingURL=About.module.css.map */

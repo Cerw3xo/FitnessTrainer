@@ -1,12 +1,16 @@
 @use "../styles/variables" as *;
 
 .header {
-  position: static;
-  border-bottom: 1px solid $color-muted;
-  background: rgba($color-bg, 0.92);
+  position: fixed;
+  border-bottom: 1px solid $color-border;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $color-bg;
+  z-index: 1000;
 
   .inner {
-    min-height: 76px;
+    min-height: 90px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -16,45 +20,42 @@
   .brand {
     display: inline-flex;
     align-items: center;
-    gap: $space-3;
+    gap: $space-4;
     text-decoration: none;
-  }
+    .icon {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: $color-bg;
+      display: inline-block;
+      overflow: hidden;
 
-  .icon {
-    width: 2rem;
-    height: 2rem;
-    border-radius: $radius-sm;
-    border: 1px solid $color-muted;
-    background: $color-bg;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: $color-accent;
+      .iconImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    }
 
-    svg {
-      width: 1.2rem;
-      height: 1.2rem;
+    .name {
+      margin: 0;
+      color: $color-text;
+      font-size: $font-size-lg;
+      font-weight: 600;
     }
   }
 
-  .name {
-    color: $color-text;
-    font-size: $font-size-base;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-
-  .nav {
+  .desktopNav {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
     gap: $space-5;
   }
 
   .link {
     text-decoration: none;
     color: $color-muted;
-    font-size: $font-size-sm;
+    font-size: $font-size-base;
     transition: color 0.2s ease;
 
     &:hover {
@@ -62,16 +63,137 @@
     }
   }
 
-  @media (max-width: 768px) {
-    .inner {
-      min-height: auto;
-      padding: $space-4 0;
-      flex-direction: column;
-      align-items: flex-start;
+  .menuButton {
+    display: none;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .menuBar {
+    position: absolute;
+    left: 0.5rem;
+    right: 0.5rem;
+    height: 2px;
+    background: $color-text;
+    border-radius: 999px;
+    transition:
+      top 0.3s ease,
+      transform 0.3s ease,
+      opacity 0.2s ease;
+
+    &:nth-child(1) {
+      top: 0.85rem;
     }
 
-    .nav {
-      gap: $space-4;
+    &:nth-child(2) {
+      top: 1.35rem;
+    }
+
+    &:nth-child(3) {
+      top: 1.85rem;
+    }
+  }
+
+  .menuButtonOpen {
+    .menuBar {
+      &:nth-child(1) {
+        top: 1.35rem;
+        transform: rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        top: 1.35rem;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  .mobileNav {
+    display: none;
+  }
+
+  @media (max-width: 992px) {
+    &.headerMenuOpen {
+      background: $color-muted;
+      border-bottom-color: rgba($color-bg, 0.2);
+
+      .brand {
+        .name {
+          color: $color-bg;
+        }
+      }
+
+      .menuBar {
+        background: $color-bg;
+      }
+    }
+
+    .inner {
+      min-height: 82px;
+    }
+
+    .brand {
+      .name {
+        font-size: $font-size-base;
+      }
+    }
+
+    .desktopNav {
+      display: none;
+    }
+
+    .menuButton {
+      display: inline-block;
+    }
+
+    .mobileNav {
+      display: block;
+      background: $color-muted;
+      width: 100%;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      pointer-events: none;
+      transform: translateY(-0.75rem);
+      transition:
+        max-height 0.35s ease,
+        opacity 0.25s ease,
+        transform 0.35s ease;
+    }
+
+    .mobileNavOpen {
+      max-height: 30rem;
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .mobileNavInner {
+      min-height: 25rem;
+      padding: $space-7 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: $space-5;
+    }
+
+    .mobileLink {
+      text-decoration: none;
+      color: $color-bg;
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.2;
     }
   }
 }

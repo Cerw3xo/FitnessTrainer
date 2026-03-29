@@ -1,0 +1,5 @@
+{
+    "workbench.editor.enablePreview": true,
+    "workbench.commandPalette.experimental.askChatLocation": "chatView",
+    "workbench.editor.showTabs": "multiple"
+}
