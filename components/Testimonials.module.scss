@@ -1,0 +1,40 @@
+@use "../styles/variables" as *;
+
+.testimonials {
+  padding: 6rem 0;
+  border-top: 1px solid $color-border;
+
+  .list {
+    margin-top: $space-8;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $space-5;
+  }
+
+  .item {
+    margin: 0;
+    padding: $space-6;
+    border-radius: $radius-lg;
+    border: 1px solid $color-border;
+    background: $color-surface;
+
+    blockquote {
+      margin: 0;
+      font-size: $font-size-base;
+      line-height: 1.75;
+      color: $color-text;
+    }
+
+    figcaption {
+      margin-top: $space-4;
+      color: $color-muted;
+      font-size: $font-size-sm;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .list {
+      grid-template-columns: 1fr;
+    }
+  }
+}

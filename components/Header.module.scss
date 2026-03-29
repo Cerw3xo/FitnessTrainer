@@ -1,0 +1,77 @@
+@use "../styles/variables" as *;
+
+.header {
+  position: static;
+  border-bottom: 1px solid $color-border;
+  background: rgba($color-bg, 0.92);
+
+  .inner {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-5;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-3;
+    text-decoration: none;
+  }
+
+  .icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: $radius-sm;
+    border: 1px solid $color-border;
+    background: $color-surface;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-accent;
+
+    svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  }
+
+  .name {
+    color: $color-text;
+    font-size: $font-size-base;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $space-5;
+  }
+
+  .link {
+    text-decoration: none;
+    color: $color-muted;
+    font-size: $font-size-sm;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $color-text;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .inner {
+      min-height: auto;
+      padding: $space-4 0;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .nav {
+      gap: $space-4;
+    }
+  }
+}

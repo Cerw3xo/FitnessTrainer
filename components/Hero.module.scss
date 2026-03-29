@@ -1,0 +1,169 @@
+@use "../styles/variables" as *;
+
+.hero {
+  padding: 0 0 6rem;
+
+  .layout {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: clamp(680px, 88vh, 860px);
+    overflow: hidden;
+    background: $color-bg;
+  }
+
+  .content {
+    position: relative;
+    z-index: 4;
+    padding: clamp(2rem, 5vw, 4.5rem) clamp(1.25rem, 4vw, 3.8rem)
+      clamp(2rem, 5vw, 4rem) max(1.25rem, calc((100vw - 1280px) / 2));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .eyebrow {
+      margin: 0 0 $space-4;
+      color: $color-accent;
+      font-size: $font-size-xs;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .title {
+      margin: 0;
+      max-width: 14ch;
+      font-size: clamp(2.2rem, 5.5vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      margin: $space-6 0 0;
+      max-width: 35ch;
+      color: $color-muted;
+      font-size: $font-size-lg;
+      line-height: 1.7;
+    }
+  }
+
+  .cta {
+    margin-top: $space-7;
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    gap: $space-4;
+    border-radius: 999px;
+    background: $color-accent;
+    color: $color-text;
+    text-decoration: none;
+    padding: 0.4rem 0.45rem 0.4rem 1.4rem;
+    font-size: 1rem;
+    font-weight: 600;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      background 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      background: $color-accent-strong;
+      box-shadow: 0 12px 28px rgba($color-accent, 0.35);
+    }
+    .ctaIcon {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: rgba($color-text, 0.95);
+      color: $color-accent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+  }
+
+  .highlights {
+    margin: $space-7 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: $space-4;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: $space-3;
+      color: rgba($color-text, 0.86);
+      font-size: clamp(1rem, 1.4vw, 1.2rem);
+    }
+
+    li::before {
+      content: "✓";
+      color: $color-accent;
+      font-weight: 700;
+      transform: translateY(-1px);
+    }
+  }
+
+  .media {
+    position: relative;
+    min-height: clamp(680px, 80vh, 860px);
+    isolation: isolate;
+
+    .image {
+      object-fit: cover;
+      object-position: center 16%;
+      transform: scale(1.04);
+      -webkit-mask-image: radial-gradient(
+        120% 120% at 58% 50%,
+        rgba($color-text, 1) 58%,
+        rgba($color-text, 0) 84%
+      );
+      mask-image: radial-gradient(
+        120% 120% at 58% 50%,
+        rgba($color-text, 1) 58%,
+        rgba($color-text, 0) 84%
+      );
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 0 4rem;
+
+    .layout {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .content {
+      padding: 1.8rem 1.2rem 2rem;
+    }
+
+    .title {
+      font-size: clamp(2rem, 11vw, 3.4rem);
+    }
+
+    .subtitle {
+      font-size: $font-size-base;
+    }
+
+    .cta {
+      margin-top: $space-6;
+    }
+
+    .highlights {
+      margin-top: $space-6;
+      gap: $space-3;
+
+      li {
+        font-size: $font-size-base;
+      }
+    }
+
+    .media {
+      min-height: 420px;
+    }
+  }
+}

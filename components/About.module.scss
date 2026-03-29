@@ -1,0 +1,30 @@
+@use "../styles/variables" as *;
+
+.about {
+  padding: 6rem 0;
+  border-top: 1px solid $color-border;
+
+  .grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: $space-8;
+
+    .text {
+      margin: 0;
+      color: $color-muted;
+      font-size: $font-size-lg;
+      line-height: 1.75;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: $space-6;
+
+      .text {
+        font-size: $font-size-base;
+      }
+    }
+  }
+}
