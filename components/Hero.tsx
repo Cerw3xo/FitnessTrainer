@@ -8,9 +8,11 @@ export default function Hero() {
     <section id="hero" className={styles.hero}>
       <div className={styles.layout}>
         <div className={styles.content}>
-          <p className={styles.eyebrow}>MATEY TRAINER - OSOBNÝ TRÉNER</p>
-          <h1 className={styles.title}>VÁŠ DÔVERYHODNÝ OSOBNÝ TRÉNER</h1>
-          <p className={styles.subtitle}>Profesionálny osobný tréning a online koučing.</p>
+          <div className={styles.top}>
+            <p className={styles.eyebrow}>MATEY TRAINER - OSOBNÝ TRÉNER</p>
+            <h1 className={styles.title}>VÁŠ DÔVERYHODNÝ OSOBNÝ TRÉNER</h1>
+            <p className={styles.subtitle}>Profesionálny osobný tréning a online koučing.</p>
+          </div>
 
           <a href="#contact" className={styles.cta}>
             <span>Rezervovať si sedenie</span>
@@ -32,9 +34,13 @@ export default function Hero() {
             alt="Osobný tréner Matey"
             fill
             priority
-            sizes="(max-width: 900px) 100vw, 50vw"
+            sizes="(min-width: 1200px) max((min(100vw, 1200px) - 32px) / 2, 1px), (min-width: 810px) and (max-width: 1199.98px) max((min(100vw, 1200px) - 32px) / 2, 1px), (max-width: 809.98px) calc(min(100vw, 1200px) - 40px)"
             className={styles.image}
           />
+          <div className={`${styles.gradient} ${styles.gradientBottom}`} aria-hidden="true" />
+          <div className={`${styles.gradient} ${styles.gradientLeft}`} aria-hidden="true" />
+          <div className={`${styles.gradient} ${styles.gradientRight}`} aria-hidden="true" />
+          <div className={`${styles.gradient} ${styles.gradientTop}`} aria-hidden="true" />
         </div>
       </div>
     </section>

@@ -2,7 +2,7 @@
 
 .header {
   position: static;
-  border-bottom: 1px solid $color-border;
+  border-bottom: 1px solid $color-muted;
   background: rgba($color-bg, 0.92);
 
   .inner {
@@ -24,8 +24,8 @@
     width: 2rem;
     height: 2rem;
     border-radius: $radius-sm;
-    border: 1px solid $color-border;
-    background: $color-surface;
+    border: 1px solid $color-muted;
+    background: $color-bg;
     display: inline-flex;
     align-items: center;
     justify-content: center;

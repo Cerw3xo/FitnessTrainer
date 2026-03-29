@@ -2,64 +2,75 @@
 
 .hero {
   padding: 0 0 6rem;
+  scroll-margin-top: 6.25rem;
+  $hero-content-top: 6.25rem;
 
   .layout {
-    position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: clamp(680px, 88vh, 860px);
-    overflow: hidden;
-    background: $color-bg;
+    grid-template-columns: minmax(0, 584px) minmax(0, 1fr);
+    align-items: flex-start;
+    gap: $space-5;
+    width: min(100%, 1200px);
+    margin-inline: auto;
   }
 
   .content {
-    position: relative;
-    z-index: 4;
-    padding: clamp(2rem, 5vw, 4.5rem) clamp(1.25rem, 4vw, 3.8rem)
-      clamp(2rem, 5vw, 4rem) max(1.25rem, calc((100vw - 1280px) / 2));
+    max-width: 584px;
+    width: 100%;
+    padding: $hero-content-top 0 7.5rem 2.5rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
+    gap: 2.5rem;
+
+    .top {
+      width: 100%;
+      display: grid;
+      gap: 1.5rem;
+    }
 
     .eyebrow {
-      margin: 0 0 $space-4;
-      color: $color-accent;
-      font-size: $font-size-xs;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      margin: 0;
+      color: $color-accent-strong;
+      font-size: $font-size-sm;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0;
       text-transform: uppercase;
     }
 
     .title {
       margin: 0;
-      max-width: 14ch;
-      font-size: clamp(2.2rem, 5.5vw, 5rem);
-      line-height: 1.02;
-      letter-spacing: -0.03em;
+      max-width: 80%;
+      font-size: $font-size-hero-title;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      text-transform: uppercase;
     }
 
     .subtitle {
-      margin: $space-6 0 0;
-      max-width: 35ch;
+      margin: 0;
+      max-width: 80%;
       color: $color-muted;
-      font-size: $font-size-lg;
-      line-height: 1.7;
+      font-size: $font-size-base;
+      line-height: 1.5;
     }
   }
 
   .cta {
-    margin-top: $space-7;
+    margin: 0;
     width: fit-content;
+    height: 3rem;
     display: inline-flex;
     align-items: center;
-    gap: $space-4;
+    gap: 1rem;
     border-radius: 999px;
     background: $color-accent;
     color: $color-text;
     text-decoration: none;
-    padding: 0.4rem 0.45rem 0.4rem 1.4rem;
+    padding: 0 0.25rem 0 2rem;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     transition:
       transform 0.2s ease,
       box-shadow 0.2s ease,
@@ -71,61 +82,119 @@
       box-shadow: 0 12px 28px rgba($color-accent, 0.35);
     }
     .ctaIcon {
-      width: 2rem;
-      height: 2rem;
+      width: 2.5rem;
+      height: 2.5rem;
       border-radius: 50%;
       background: rgba($color-text, 0.95);
       color: $color-accent;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1rem;
       line-height: 1;
     }
   }
 
   .highlights {
-    margin: $space-7 0 0;
+    margin: 0;
+    width: min(100%, 34rem);
     padding: 0;
     list-style: none;
     display: grid;
-    gap: $space-4;
+    gap: 1.25rem;
 
     li {
       display: flex;
       align-items: center;
-      gap: $space-3;
+      gap: 0.75rem;
       color: rgba($color-text, 0.86);
-      font-size: clamp(1rem, 1.4vw, 1.2rem);
+      font-size: $font-size-base;
+      line-height: 1.5;
     }
 
     li::before {
       content: "✓";
       color: $color-accent;
       font-weight: 700;
-      transform: translateY(-1px);
+      transform: translateY(-0.0625rem);
     }
   }
 
   .media {
     position: relative;
-    min-height: clamp(680px, 80vh, 860px);
-    isolation: isolate;
+    align-self: flex-start;
+    margin-top: $hero-content-top;
+    width: 100%;
+    min-height: 40rem;
+    overflow: hidden;
 
     .image {
       object-fit: cover;
-      object-position: center 16%;
-      transform: scale(1.04);
+      object-position: top top;
       -webkit-mask-image: radial-gradient(
-        120% 120% at 58% 50%,
-        rgba($color-text, 1) 58%,
-        rgba($color-text, 0) 84%
+        125% 120% at 56% 50%,
+        rgba($color-text, 1) 62%,
+        rgba($color-text, 0) 88%
       );
       mask-image: radial-gradient(
-        120% 120% at 58% 50%,
-        rgba($color-text, 1) 58%,
-        rgba($color-text, 0) 84%
+        125% 120% at 56% 50%,
+        rgba($color-text, 1) 62%,
+        rgba($color-text, 0) 88%
       );
+    }
+
+    .gradient {
+      flex: none;
+      position: absolute;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .gradientLeft {
+      background: linear-gradient(
+        90deg,
+        $color-bg 0%,
+        rgba($color-bg, 0) 100%
+      );
+      width: 10rem;
+      top: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .gradientRight {
+      background: linear-gradient(
+        270deg,
+        $color-bg 0%,
+        rgba($color-bg, 0) 100%
+      );
+      width: 10rem;
+      top: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    .gradientTop {
+      background: linear-gradient(
+        $color-bg 0%,
+        rgba($color-bg, 0) 100%
+      );
+      height: 12.5rem;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .gradientBottom {
+      background: linear-gradient(
+        rgba($color-bg, 0) 0%,
+        $color-bg 100%
+      );
+      height: 10rem;
+      bottom: 0;
+      left: 0;
+      right: 0;
     }
   }
 
@@ -134,36 +203,21 @@
 
     .layout {
       grid-template-columns: 1fr;
-      min-height: auto;
     }
 
     .content {
-      padding: 1.8rem 1.2rem 2rem;
-    }
+      max-width: 100%;
+      padding: 2.5rem 0 0;
+      gap: 2rem;
 
-    .title {
-      font-size: clamp(2rem, 11vw, 3.4rem);
-    }
-
-    .subtitle {
-      font-size: $font-size-base;
-    }
-
-    .cta {
-      margin-top: $space-6;
-    }
-
-    .highlights {
-      margin-top: $space-6;
-      gap: $space-3;
-
-      li {
-        font-size: $font-size-base;
+      .title {
+        font-size: $font-size-hero-title;
       }
     }
 
     .media {
-      min-height: 420px;
+      margin-top: 0;
+      min-height: 26.25rem;
     }
   }
 }

@@ -2,7 +2,7 @@
 
 .testimonials {
   padding: 6rem 0;
-  border-top: 1px solid $color-border;
+  border-top: 1px solid $color-muted;
 
   .list {
     margin-top: $space-8;
@@ -15,8 +15,8 @@
     margin: 0;
     padding: $space-6;
     border-radius: $radius-lg;
-    border: 1px solid $color-border;
-    background: $color-surface;
+    border: 1px solid $color-muted;
+    background: $color-bg;
 
     blockquote {
       margin: 0;
