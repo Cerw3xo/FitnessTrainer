@@ -21,24 +21,24 @@ export default function Contact() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Contact form submitted:", formData);
     setFormData(initialFormState);
   };
 
   return (
     <section id="contact" className={styles.contact}>
       <div className="container">
-        <div className={styles.grid}>
-          <div>
-            <h2 className="section-title">Contact</h2>
-            <p className={styles.copy}>Tell me your goal and I will get back to you within 24 hours.</p>
+        <div className={styles.wrapper}>
+          <div className={styles.header}>
+            <p className={styles.eyebrow}>Kontakt</p>
+            <h2 className={styles.title}>Naplanujme tvoj prvy trening.</h2>
           </div>
-
           <form onSubmit={handleSubmit} className={styles.form}>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Meno</label>
             <input
               id="name"
+              name="name"
               type="text"
+              autoComplete="name"
               value={formData.name}
               onChange={(event) => setFormData((prev) => ({ ...prev, name: event.target.value }))}
               required
@@ -47,22 +47,27 @@ export default function Contact() {
             <label htmlFor="email">Email</label>
             <input
               id="email"
+              name="email"
               type="email"
+              inputMode="email"
+              autoComplete="email"
               value={formData.email}
               onChange={(event) => setFormData((prev) => ({ ...prev, email: event.target.value }))}
               required
             />
 
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">Sprava</label>
             <textarea
               id="message"
+              name="message"
               rows={5}
+              autoComplete="off"
               value={formData.message}
               onChange={(event) => setFormData((prev) => ({ ...prev, message: event.target.value }))}
               required
             />
 
-            <Button type="submit">Send Message</Button>
+            <Button type="submit">Odoslat spravu</Button>
           </form>
         </div>
       </div>

@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
+import { siteConfig } from "@/utils/site";
 
 const navItems = [
   { label: "Domov", href: "#hero" },
@@ -13,6 +15,28 @@ const navItems = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -32,18 +56,24 @@ export default function Header() {
             href="#hero"
             className={styles.brand}
             onClick={closeMenu}
+            aria-label="Prejst na zaciatok stranky"
           >
             <span className={styles.icon} aria-hidden="true">
-              <img
-                src="/icon.avif"
+              <Image
+                src="/icon.webp"
                 alt=""
+                width={32}
+                height={32}
                 className={styles.iconImage}
               />
             </span>
-            <h1 className={styles.name}>MATEJ ČERVENKA</h1>
+            <span className={styles.name}>{siteConfig.personName.toUpperCase()}</span>
           </a>
 
-          <nav className={styles.desktopNav} aria-label="Hlavná navigácia">
+          <nav
+            className={styles.desktopNav}
+            aria-label="Hlavná navigácia"
+          >
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -74,6 +104,7 @@ export default function Header() {
         id="mobile-nav"
         className={`${styles.mobileNav} ${isMenuOpen ? styles.mobileNavOpen : ""}`}
         aria-label="Mobilná navigácia"
+        aria-hidden={!isMenuOpen}
       >
         <div className={`container ${styles.mobileNavInner}`}>
           {navItems.map((item) => (
@@ -82,6 +113,7 @@ export default function Header() {
               href={item.href}
               className={styles.mobileLink}
               onClick={closeMenu}
+              tabIndex={isMenuOpen ? 0 : -1}
             >
               {item.label}
             </a>

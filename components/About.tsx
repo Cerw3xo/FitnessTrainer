@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Button from "./Button";
 import styles from "./About.module.scss";
 
 export default function About() {
@@ -5,11 +7,28 @@ export default function About() {
     <section id="about" className={styles.about}>
       <div className="container">
         <div className={styles.grid}>
-          <h2 className="section-title">About</h2>
-          <p className={styles.text}>
-            I help busy professionals transform their physique with focused strength training, personalized nutrition,
-            and accountability. Every program is tailored to your schedule, goals, and current fitness level.
-          </p>
+          <div className={styles.media}>
+            <Image
+              src="/heroSection.webp"
+              alt="Matej Cervenka"
+              fill
+              sizes="(max-width: 900px) 100vw, 50vw"
+              className={styles.image}
+            />
+          </div>
+
+          <div className={styles.content}>
+            <p className={styles.eyebrow}>About me</p>
+            <h2 className={styles.title}>Trener, ktory stavia na systeme.</h2>
+            <p className={styles.text}>
+              Pomaham ludom budovat silu, kondiciu a sebadoveru cez rozumne nastavene
+              treningy, individualny pristup a dlhodobo udrzatelne navyky. Kazdy plan
+              prisposobujem tvojej vykonnosti, cielu aj casovym moznostiam.
+            </p>
+            <Button href="#contact" variant="pillArrow" className={styles.cta}>
+              Rezervovat
+            </Button>
+          </div>
         </div>
       </div>
     </section>

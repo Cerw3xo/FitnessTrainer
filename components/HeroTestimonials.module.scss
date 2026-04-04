@@ -1,0 +1,81 @@
+@use "../styles/variables" as *;
+
+.section {
+  padding: 9rem 0 9rem;
+}
+
+.inner {
+  width: min(100% - 2rem, 1200px);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2rem, 5vw, 6rem);
+}
+
+.card {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 1.15rem;
+  min-height: 100%;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.stars {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  color: $color-accent;
+  font-size: $font-size-xl;
+  line-height: 1;
+}
+
+.quote {
+  margin: 0;
+  max-width: 21ch;
+  color: $color-muted;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+}
+
+@media (max-width: 1200px) {
+  .section {
+    padding: 1rem 0 4rem;
+  }
+
+  .inner {
+    gap: 2rem;
+  }
+
+  .quote {
+    max-width: 18ch;
+    font-size: clamp(1.25rem, 2.1vw, 1.7rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 1rem 0 3rem;
+  }
+
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .card {
+    gap: 1.25rem;
+  }
+
+  .stars {
+    font-size: 1.6rem;
+  }
+
+  .quote {
+    max-width: 22ch;
+    font-size: 1.2rem;
+  }
+}

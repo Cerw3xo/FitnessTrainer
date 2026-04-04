@@ -2,11 +2,63 @@
 
 .footer {
   padding: 2rem 0 3rem;
-  border-top: 1px solid $color-muted;
+  border-top: 1px solid rgba($color-border, 0.95);
 
+  .top,
+  .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-4;
+  }
+
+  .top {
+    padding-bottom: 1.25rem;
+  }
+
+  .bottom {
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba($color-border, 0.95);
+  }
+
+  .brand,
   p {
     margin: 0;
-    color: $color-muted;
+    color: rgba($color-muted, 0.88);
     font-size: $font-size-sm;
+  }
+
+  .brand {
+    color: $color-text;
+    font-size: $font-size-base;
+    font-weight: 600;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-5;
+  }
+
+  .nav a {
+    color: rgba($color-muted, 0.88);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .nav a:hover {
+    color: $color-text;
+  }
+
+  @media (max-width: 768px) {
+    .top,
+    .bottom {
+      align-items: start;
+      flex-direction: column;
+    }
+
+    .nav {
+      gap: $space-4;
+    }
   }
 }

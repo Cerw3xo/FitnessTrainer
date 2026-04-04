@@ -3,6 +3,7 @@
 
 # next.js
 /.next/
+/.next-dev/
 /out/
 
 # production
@@ -23,3 +24,9 @@ pnpm-debug.log*
 
 # typescript
 *.tsbuildinfo
+
+# generated CSS from SCSS sources
+components/*.module.css
+components/*.module.css.map
+styles/globals.css
+styles/globals.css.map

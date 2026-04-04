@@ -1,7 +1,9 @@
 export const siteConfig = {
-  siteName: "Elevate Coaching",
-  title: "Elevate Coaching | Personal Trainer",
+  personName: "Matej Cervenka",
+  siteName: "Matej Cervenka Coaching",
+  title: "Matej Cervenka | Osobny trener",
   description:
-    "Premium personal training for professionals who want sustainable strength, confidence, and performance.",
-  url: "https://example.com",
+    "Osobny trening a online coaching pre ludi, ktori chcu silu, lepsiu kondiciu a dlhodobo udrzatelne vysledky.",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  locale: "sk_SK",
 };

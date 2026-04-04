@@ -2,29 +2,88 @@
 
 .about {
   padding: 6rem 0;
-  border-top: 1px solid $color-muted;
 
   .grid {
+    align-items: center;
     display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
     gap: $space-8;
+  }
 
-    .text {
-      margin: 0;
-      color: $color-muted;
-      font-size: $font-size-lg;
-      line-height: 1.75;
-    }
+  .media {
+    position: relative;
+    min-height: 38rem;
+    overflow: hidden;
+    border-radius: 1.75rem;
+    background: rgba($color-menu, 0.4);
+  }
+
+  .media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba($color-bg, 0.08) 0%, rgba($color-bg, 0.46) 100%),
+      linear-gradient(90deg, rgba($color-bg, 0.08) 0%, rgba($color-bg, 0.34) 100%);
+  }
+
+  .image {
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .content {
+    display: grid;
+    gap: $space-4;
+    align-content: center;
+  }
+
+  .cta {
+    justify-self: start;
+    width: fit-content;
+  }
+
+  .eyebrow {
+    margin: 0;
+    color: $color-accent;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .title {
+    margin: 0;
+    max-width: 100%;
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+
+  .text {
+    margin: 0;
+    color: $color-muted;
+    font-size: $font-size-lg;
+    line-height: 1.8;
   }
 
   @media (max-width: 900px) {
     .grid {
       grid-template-columns: 1fr;
       gap: $space-6;
+    }
 
-      .text {
-        font-size: $font-size-base;
-      }
+    .media {
+      min-height: 26rem;
+    }
+
+    .title {
+      max-width: 100%;
+    }
+
+    .text {
+      font-size: $font-size-base;
     }
   }
 }

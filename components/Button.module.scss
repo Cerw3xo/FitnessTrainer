@@ -23,3 +23,26 @@
     box-shadow: 0 10px 25px rgba($color-accent, 0.35);
   }
 }
+
+.pillArrow {
+  gap: 1rem;
+  padding: 0.35rem 0.35rem 0.35rem 1.4rem;
+  border-radius: 999px;
+}
+
+.arrowCircle {
+  width: 2.4rem;
+  height: 2.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: $color-text;
+  color: $color-bg;
+  flex: none;
+}
+
+.arrow {
+  font-size: 1rem;
+  line-height: 1;
+}

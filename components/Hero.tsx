@@ -14,13 +14,14 @@ export default function Hero() {
         <div className={styles.content}>
           <div className={styles.top}>
             <p className={styles.eyebrow}>
-              MATEY TRAINER - OSOBNÝ TRÉNER
+              MATEJ CERVENKA | OSOBNY TRENER
             </p>
             <h1 className={styles.title}>
-              VÁŠ prepnuty OSOBNÝ TRÉNER
+              doveryhodny osobny trener
             </h1>
             <p className={styles.subtitle}>
-              Profesionálny osobný tréning a online koučing.
+              Osobny trening a online coaching, ktory sa prisposobi
+              vasmu cielu, vykonnosti aj realnemu zivotnemu tempu.
             </p>
           </div>
 
@@ -40,7 +41,7 @@ export default function Hero() {
 
         <div className={styles.media}>
           <Image
-            src="/heroSection.avif"
+            src="/heroSection.webp"
             alt="Osobný tréner Matey"
             fill
             priority

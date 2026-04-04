@@ -1,0 +1,25 @@
+@use "../styles/variables" as *;
+
+.quoteSection {
+  padding: 4.5rem 0 5rem;
+}
+
+.quote {
+  margin: 0 auto;
+  max-width: 22ch;
+  color: rgba($color-text, 0.94);
+  font-size: clamp(2rem, 4vw, $font-size-hero-title);
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .quoteSection {
+    padding: 3rem 0 3.5rem;
+  }
+
+  .quote {
+    max-width: 100%;
+  }
+}

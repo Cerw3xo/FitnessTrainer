@@ -1,25 +1,33 @@
 @use "../styles/variables" as *;
 
 .hero {
-  padding: var(--header-offset) 0 6rem;
+  padding: var(--header-offset) 0 0;
   scroll-margin-top: calc(var(--header-offset) + 1rem);
-  $hero-content-top: 6.25rem;
+  overflow: hidden;
+  $hero-content-top: 4.75rem;
+  $hero-content-bottom: 6rem;
 
   .layout {
     display: grid;
     grid-template-columns: minmax(0, 584px) minmax(0, 1fr);
-    align-items: flex-start;
+    align-items: stretch;
     gap: $space-5;
     width: min(100%, 1200px);
+    min-height: clamp(
+      44rem,
+      calc(100svh - var(--header-offset)),
+      56rem
+    );
     margin-inline: auto;
   }
 
   .content {
     max-width: 584px;
     width: 100%;
-    padding: $hero-content-top 0 7.5rem 2.5rem;
+    padding: $hero-content-top 0 $hero-content-bottom 2.5rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
     gap: 2.5rem;
 
@@ -42,7 +50,7 @@
     .title {
       margin: 0;
       max-width: 80%;
-      font-size: $font-size-hero-title;
+      font-size: 4rem;
       line-height: 1.2;
       letter-spacing: -0.025em;
       text-transform: uppercase;
@@ -122,25 +130,14 @@
 
   .media {
     position: relative;
-    align-self: flex-start;
-    margin-top: $hero-content-top;
+    align-self: stretch;
     width: 100%;
-    min-height: 40rem;
+    min-height: 100%;
     overflow: hidden;
 
     .image {
       object-fit: cover;
-      object-position: top top;
-      -webkit-mask-image: radial-gradient(
-        125% 120% at 56% 50%,
-        rgba($color-text, 1) 62%,
-        rgba($color-text, 0) 88%
-      );
-      mask-image: radial-gradient(
-        125% 120% at 56% 50%,
-        rgba($color-text, 1) 62%,
-        rgba($color-text, 0) 88%
-      );
+      object-position: center top;
     }
 
     .gradient {
@@ -157,7 +154,7 @@
         $color-bg 0%,
         rgba($color-bg, 0) 100%
       );
-      width: 10rem;
+      width: clamp(5rem, 11vw, 12rem);
       top: 0;
       bottom: 0;
       left: 0;
@@ -169,7 +166,7 @@
         $color-bg 0%,
         rgba($color-bg, 0) 100%
       );
-      width: 10rem;
+      width: clamp(5rem, 11vw, 12rem);
       top: 0;
       bottom: 0;
       right: 0;
@@ -180,7 +177,7 @@
         $color-bg 0%,
         rgba($color-bg, 0) 100%
       );
-      height: 12.5rem;
+      height: clamp(7rem, 12vw, 14rem);
       top: 0;
       left: 0;
       right: 0;
@@ -191,10 +188,78 @@
         rgba($color-bg, 0) 0%,
         $color-bg 100%
       );
-      height: 10rem;
+      height: clamp(6rem, 11vw, 12rem);
       bottom: 0;
       left: 0;
       right: 0;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .layout {
+      grid-template-columns: minmax(0, 600px) minmax(0, 1fr);
+    }
+
+    .media {
+      align-self: center;
+      min-height: clamp(
+        50rem,
+        calc(100svh - var(--header-offset)),
+        55rem
+      );
+    }
+
+    .gradientTop {
+      height: clamp(6rem, 9vw, 10rem);
+    }
+
+    .gradientBottom {
+      height: clamp(5rem, 8vw, 9rem);
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .layout {
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+      gap: clamp(1rem, 3vw, 2rem);
+      min-height: clamp(
+        38rem,
+        calc(100svh - var(--header-offset)),
+        48rem
+      );
+    }
+
+    .content {
+      padding-left: 1.5rem;
+
+      .title {
+        font-size: 3rem;
+        max-width: 100%;
+      }
+
+      .subtitle {
+        max-width: 100%;
+      }
+    }
+
+    .media {
+      min-height: clamp(34rem, 62vw, 46rem);
+    }
+
+    .gradientRight {
+      display: none;
+    }
+
+    .gradientLeft {
+      width: clamp(4rem, 8vw, 7rem);
+    }
+
+    .gradientTop {
+      height: clamp(5rem, 10vw, 8rem);
+    }
+
+    .gradientBottom {
+      height: clamp(4rem, 9vw, 7rem);
     }
   }
 
@@ -203,21 +268,28 @@
 
     .layout {
       grid-template-columns: 1fr;
+      min-height: auto;
     }
 
     .content {
       max-width: 100%;
       padding: 2.5rem 0 0;
+      justify-content: flex-start;
       gap: 2rem;
-
-      .title {
-        font-size: $font-size-hero-title;
-      }
     }
 
     .media {
       margin-top: 0;
-      min-height: 26.25rem;
+      min-height: 32rem;
+    }
+
+    .gradientRight {
+      display: block;
+      width: clamp(4rem, 12vw, 6rem);
+    }
+
+    .gradientLeft {
+      width: clamp(4rem, 12vw, 6rem);
     }
   }
 }

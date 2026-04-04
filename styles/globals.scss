@@ -3,6 +3,7 @@
 
 :root {
   --header-offset: 90px;
+  color-scheme: dark;
 }
 
 * {
@@ -17,6 +18,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-offset);
 }
 
 body {
@@ -24,6 +26,8 @@ body {
   color: $color-text;
   font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 
   main {
     min-height: 100vh;
@@ -32,6 +36,11 @@ body {
   a {
     color: inherit;
   }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 h1,
