@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./Hero.module.scss";
 
 const highlights = [
-  "Viac ako 200 klientov",
+  "200+ spokojných klientov",
   "10 rokov skúseností",
   "5+ rokov súťaží",
 ];
@@ -41,7 +41,7 @@ export default function Hero() {
 
         <div className={styles.media}>
           <Image
-            src="/heroSection.webp"
+            src="/matey.png"
             alt="Osobný tréner Matey"
             fill
             priority

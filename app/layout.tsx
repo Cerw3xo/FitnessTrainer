@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "../styles/globals.scss";
+import SmoothScroll from "@/components/SmoothScroll";
 import { siteConfig } from "@/utils/site";
 
 export const metadata: Metadata = {
@@ -42,7 +43,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sk">
-      <body>{children}</body>
+      <body>
+        <SmoothScroll />
+        {children}
+      </body>
     </html>
   );
 }

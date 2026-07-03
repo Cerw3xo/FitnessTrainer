@@ -9,7 +9,7 @@ export default function About() {
         <div className={styles.grid}>
           <div className={styles.media}>
             <Image
-              src="/heroSection.webp"
+              src="/matey.png"
               alt="Matej Cervenka"
               fill
               sizes="(max-width: 900px) 100vw, 50vw"

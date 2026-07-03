@@ -1,10 +1,44 @@
-$color-bg: #000000;
-$color-text: #ffffff;
-$color-muted: #cccccc;
-$color-border: #333333;
-$color-accent: #393053;
-$color-accent-strong: #443c68;
-$color-menu: #1e1e1e;
+$brand-purple: #a259ff;
+$brand-purple-light: #973cf3;
+$brand-purple-dark: #6f2dbd;
+
+$color-bg: #0d0d0f;
+$color-surface: #17171c;
+$color-surface-elevated: #2a2a31;
+$color-border: #31313a;
+$color-text: #f5f5f5;
+$color-text-secondary: #8a8a93;
+$color-text-muted: #5c5c66;
+
+$color-accent: $brand-purple;
+$color-accent-light: $brand-purple-light;
+$color-accent-strong: $brand-purple-dark;
+$color-muted: $color-text-secondary;
+$color-menu: $color-surface;
+
+$gradient-primary: linear-gradient(
+  135deg,
+  $color-accent-strong 0%,
+  $color-accent 100%
+);
+$gradient-primary-motion: linear-gradient(
+  135deg,
+  $color-accent-strong 0%,
+  $color-accent 38%,
+  $color-accent-light 68%,
+  $color-accent-strong 100%
+);
+$gradient-primary-soft: linear-gradient(
+  135deg,
+  rgba($color-accent-strong, 0.26) 0%,
+  rgba($color-accent, 0.18) 100%
+);
+$gradient-surface: linear-gradient(
+  180deg,
+  rgba($color-surface-elevated, 0.82) 0%,
+  rgba($color-surface, 0.72) 100%
+);
+$shadow-accent: 0 18px 44px rgba($color-accent, 0.28);
 
 $space-1: 0.25rem;
 $space-2: 0.5rem;

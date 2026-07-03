@@ -22,7 +22,9 @@ html {
 }
 
 body {
-  background: $color-bg;
+  background:
+    linear-gradient(180deg, rgba($color-accent-strong, 0.08) 0%, rgba($color-bg, 0) 28rem),
+    $color-bg;
   color: $color-text;
   font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.5;
@@ -36,6 +38,11 @@ body {
   a {
     color: inherit;
   }
+}
+
+::selection {
+  background: rgba($color-accent, 0.35);
+  color: $color-text;
 }
 
 img {

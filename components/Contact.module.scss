@@ -1,20 +1,27 @@
 @use "../styles/variables" as *;
 
 .contact {
-  padding: 6rem 0;
+  padding: 7rem 0 8rem;
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba($color-bg, 0.84) 0%, rgba($color-bg, 0.34) 18%, rgba($color-bg, 0.4) 64%, rgba($color-bg, 0.88) 100%),
-    linear-gradient(90deg, rgba($color-bg, 0.74) 0%, rgba($color-bg, 0.28) 36%, rgba($color-bg, 0.7) 100%),
+    linear-gradient(180deg, rgba($color-bg, 0.9) 0%, rgba($color-bg, 0.18) 20%, rgba($color-bg, 0.22) 60%, rgba($color-bg, 0.92) 100%),
+    linear-gradient(90deg, rgba($color-bg, 0.7) 0%, rgba($color-bg, 0.08) 36%, rgba($color-bg, 0.68) 100%),
     url("/contact.webp") center center / cover no-repeat;
 }
 
- .contact::before {
+.contact::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, $color-bg 0%, rgba($color-bg, 0) 28%);
+  background: linear-gradient(
+    180deg,
+    $color-bg 0%,
+    rgba($color-bg, 0.98) 10%,
+    rgba($color-bg, 0.76) 24%,
+    rgba($color-bg, 0.34) 40%,
+    rgba($color-bg, 0) 58%
+  );
   pointer-events: none;
 }
 
@@ -22,14 +29,14 @@
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 2rem;
+  gap: 3rem;
   justify-items: center;
-  padding: 2rem 0 3rem;
+  padding: 1rem 0 2rem;
 }
 
 .header {
   display: grid;
-  gap: $space-4;
+  gap: $space-3;
   text-align: center;
 }
 
@@ -38,54 +45,72 @@
   color: $color-accent;
   font-size: $font-size-sm;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .title {
   margin: 0 auto;
   max-width: 18ch;
-  font-size: clamp(2rem, 3vw, 3rem);
+  font-size: clamp(2rem, 3.2vw, 3.25rem);
   line-height: 1.04;
   letter-spacing: -0.03em;
   text-transform: uppercase;
 }
 
+.subtitle {
+  margin: 0.5rem auto 0;
+  max-width: 38ch;
+  color: $color-muted;
+  font-size: $font-size-base;
+  line-height: 1.65;
+}
+
 .form {
-  width: min(100%, 25rem);
-  padding: 2rem;
+  width: min(100%, 27rem);
+  padding: 2.25rem;
   display: grid;
-  gap: $space-3;
-  border: 1px solid rgba($color-border, 0.95);
+  gap: $space-4;
+  border: 1px solid rgba($color-accent, 0.22);
   border-radius: 1.75rem;
-  background: rgba($color-bg, 0.72);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background:
+    $gradient-surface,
+    rgba($color-bg, 0.82);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
   box-shadow:
-    inset 0 1px 0 rgba($color-text, 0.04),
-    0 24px 60px rgba($color-bg, 0.24);
+    inset 0 1px 0 rgba($color-text, 0.08),
+    0 0 0 1px rgba($color-accent, 0.08),
+    0 32px 64px rgba($color-bg, 0.5);
 
   label {
     font-size: $font-size-sm;
-    color: rgba($color-muted, 0.88);
+    font-weight: 500;
+    color: rgba($color-text, 0.75);
+    margin-bottom: -$space-2;
   }
 
   input,
   textarea {
     width: 100%;
-    border: 1px solid rgba($color-border, 0.95);
+    border: 1px solid rgba($color-border, 1);
     border-radius: $radius-md;
-    background: rgba($color-menu, 0.72);
+    background: rgba(255, 255, 255, 0.05);
     color: $color-text;
     padding: 0.875rem 1rem;
     font-size: $font-size-base;
     font-family: inherit;
     outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+
+    &::placeholder {
+      color: rgba($color-muted, 0.35);
+    }
 
     &:focus {
-      border-color: $color-accent;
-      box-shadow: 0 0 0 3px rgba($color-accent, 0.2);
+      background: rgba($color-surface-elevated, 0.62);
+      border-color: rgba($color-accent, 0.65);
+      box-shadow: 0 0 0 3px rgba($color-accent, 0.12);
     }
   }
 
@@ -96,11 +121,16 @@
 }
 
 @media (max-width: 900px) {
+  .contact {
+    padding: 5rem 0 6rem;
+  }
+
   .title {
     max-width: 100%;
   }
 
   .form {
-    padding: 1.5rem;
+    width: min(100%, 100%);
+    padding: 1.75rem;
   }
 }

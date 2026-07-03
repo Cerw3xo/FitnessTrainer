@@ -1,134 +1,258 @@
 @use "../styles/variables" as *;
 
 .testimonials {
-  padding: 6rem 0;
+  padding: 6rem 0 0;
+}
 
-  .header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: $space-6;
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: $space-6;
+  margin-bottom: $space-8;
+}
+
+.copyBlock {
+  display: grid;
+  gap: $space-3;
+}
+
+.eyebrow {
+  margin: 0;
+  color: $color-accent;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  max-width: 13ch;
+  font-size: clamp(2rem, 3vw, 3.1rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+// ── Carousel ────────────────────────────────────────────────
+.carousel {
+  position: relative;
+  overflow: hidden;
+  padding: 0.5rem 0 3rem;
+
+  // Left edge fade
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 3rem;
+    left: 0;
+    width: 22%;
+    z-index: 4;
+    pointer-events: none;
+    background: linear-gradient(to right, $color-bg 0%, transparent 100%);
   }
 
-  .copyBlock {
-    display: grid;
-    gap: $space-3;
+  // Right edge fade
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 3rem;
+    right: 0;
+    width: 22%;
+    z-index: 4;
+    pointer-events: none;
+    background: linear-gradient(to left, $color-bg 0%, transparent 100%);
   }
+}
 
-  .eyebrow {
-    margin: 0;
-    color: $color-accent;
-    font-size: $font-size-sm;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
+.track {
+  position: relative;
+  height: 34rem;
+}
 
-  .title {
-    margin: 0;
-    max-width: 13ch;
-    font-size: clamp(2rem, 3vw, 3.1rem);
-    line-height: 1.02;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-  }
+// ── Card base ───────────────────────────────────────────────
+.card {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: min(85vw, 358px);
+  border-radius: 1.5rem;
+  border: 1px solid rgba($color-border, 0.95);
+  background:
+    $gradient-surface,
+    rgba($color-menu, 0.7);
+  overflow: hidden;
+  transition:
+    transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.9s ease,
+    filter 0.9s ease,
+    border-color 0.9s ease,
+    box-shadow 0.9s ease;
+  will-change: transform, opacity;
+}
 
-  .list {
-    margin-top: $space-8;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: $space-5;
-  }
+// Teleport: instant jump to new position, no visible travel
+.cardNoTransition {
+  transition: none !important;
+  opacity: 0 !important;
+}
 
-  .item {
-    overflow: hidden;
-    border-radius: 1.5rem;
-    border: 1px solid rgba($color-border, 0.95);
-    background: rgba($color-menu, 0.55);
-    box-shadow:
-      inset 0 1px 0 rgba($color-text, 0.03),
-      0 18px 40px rgba($color-bg, 0.18);
-  }
+// ── Slot positions ──────────────────────────────────────────
+.cardCenter {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+  z-index: 3;
+  filter: none;
+  border-color: rgba($color-accent-light, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba($color-text, 0.05),
+    0 0 0 1px rgba($color-accent, 0.14),
+    0 28px 64px rgba($color-bg, 0.5);
+}
 
-  .media {
-    position: relative;
-    min-height: 19rem;
-    overflow: hidden;
-  }
+.cardLeft {
+  transform: translateX(calc(-50% - 390px)) scale(0.83);
+  opacity: 0.48;
+  z-index: 2;
+  filter: brightness(0.45);
+}
 
-  .media::after {
+.cardRight {
+  transform: translateX(calc(-50% + 390px)) scale(0.83);
+  opacity: 0.48;
+  z-index: 2;
+  filter: brightness(0.45);
+}
+
+// ── Card internals ──────────────────────────────────────────
+.media {
+  position: relative;
+  min-height: 17rem;
+  overflow: hidden;
+
+  &::after {
     content: "";
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba($color-bg, 0.04) 0%, rgba($color-bg, 0.4) 100%),
+      linear-gradient(135deg, rgba($color-accent-strong, 0.2) 0%, rgba($color-accent, 0.04) 48%, rgba($color-bg, 0) 100%),
+      linear-gradient(180deg, rgba($color-bg, 0.04) 0%, rgba($color-bg, 0.38) 100%),
       linear-gradient(0deg, rgba($color-bg, 0.28) 0%, rgba($color-bg, 0) 55%);
   }
+}
 
-  .image {
-    object-fit: cover;
-  }
+.image {
+  object-fit: cover;
+}
 
-  .body {
-    display: grid;
-    gap: $space-3;
-    padding: 1.5rem;
+.body {
+  display: grid;
+  gap: $space-3;
+  padding: 1.5rem;
 
-    h3 {
-      margin: 0;
-      font-size: 1.35rem;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-    }
-
-    p:last-child {
-      margin: 0;
-      color: rgba($color-muted, 0.92);
-      line-height: 1.75;
-    }
-  }
-
-  .cardEyebrow {
+  h3 {
     margin: 0;
-    color: rgba($color-accent, 0.95);
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+
+  p {
+    margin: 0;
+    color: $color-muted;
+    line-height: 1.75;
     font-size: $font-size-sm;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+  }
+}
+
+.stars {
+  display: flex;
+  gap: 0.2rem;
+  color: $color-accent;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.cardEyebrow {
+  color: rgba($color-muted, 0.6) !important;
+  font-size: $font-size-xs !important;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+// ── Dots ────────────────────────────────────────────────────
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-top: 1.25rem;
+  position: relative;
+  z-index: 5;
+}
+
+.dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba($color-muted, 0.3);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease, width 0.3s ease;
+}
+
+.dotActive {
+  background: $gradient-primary;
+  width: 1.5rem;
+  border-radius: 999px;
+  transform: none;
+}
+
+// ── Responsive ──────────────────────────────────────────────
+@media (max-width: 1100px) {
+  .header {
+    align-items: start;
+    flex-direction: column;
   }
 
-  @media (max-width: 1100px) {
-    .header {
-      align-items: start;
-      flex-direction: column;
-    }
-
-    .title {
-      max-width: 100%;
-    }
-
-    .list {
-      grid-template-columns: 1fr;
-    }
-
-    .media {
-      min-height: 22rem;
-    }
+  .title {
+    max-width: 100%;
   }
 
-  @media (max-width: 768px) {
-    padding: 4rem 0;
+  .cardLeft {
+    transform: translateX(calc(-50% - 320px)) scale(0.83);
+  }
 
-    .list {
-      margin-top: $space-6;
-    }
+  .cardRight {
+    transform: translateX(calc(-50% + 320px)) scale(0.83);
+  }
+}
 
-    .media {
-      min-height: 16rem;
-    }
+@media (max-width: 768px) {
+  .testimonials {
+    padding: 4rem 0 0;
+  }
 
-    .body {
-      padding: 1.25rem;
-    }
+  .header {
+    margin-bottom: $space-6;
+  }
+
+  .track {
+    height: 36rem;
+  }
+
+  .cardLeft {
+    transform: translateX(calc(-50% - 88vw)) scale(0.82);
+    opacity: 0.3;
+  }
+
+  .cardRight {
+    transform: translateX(calc(-50% + 88vw)) scale(0.82);
+    opacity: 0.3;
   }
 }

@@ -2,26 +2,28 @@ import styles from "./Services.module.scss";
 
 const services = [
   {
+    number: "01",
     icon: "training",
     label: "1:1 vedenie",
     title: "Osobne treningy",
-    description: "Individualne vedenie v gyme so zameranim na techniku, progres a bezpecne napredovanie.",
+    description:
+      "Individualne vedenie v gyme so zameranim na techniku, progres a bezpecne napredovanie.",
   },
   {
+    number: "02",
     icon: "online",
     label: "Plan na dialku",
     title: "Online coaching",
-    description: "Treningovy plan, pravidelny feedback a vedenie na dialku, aby si mal jasny smer aj mimo fitka.",
-  },
-  {
-    icon: "nutrition",
-    label: "Lepsia regeneracia",
-    title: "Vyživa a regeneracia",
-    description: "Prakticke odporucania k jedlu, regeneracii a navykom, ktore podporia vykon aj vysledky.",
+    description:
+      "Treningovy plan, pravidelny feedback a vedenie na dialku, aby si mal jasny smer aj mimo fitka.",
   },
 ];
 
-function ServiceIcon({ icon }: { icon: (typeof services)[number]["icon"] }) {
+function ServiceIcon({
+  icon,
+}: {
+  icon: (typeof services)[number]["icon"];
+}) {
   if (icon === "online") {
     return (
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -81,22 +83,32 @@ export default function Services() {
         <div className={styles.inner}>
           <div className={styles.header}>
             <p className={styles.eyebrow}>Sluzby</p>
-            <h2 className={styles.title}>Vedenie, ktore sa prisposobi tvojmu cielu aj tempu.</h2>
+            <h2 className={styles.title}>
+              Vedenie, ktore sa prisposobi tvojmu cielu aj tempu.
+            </h2>
             <p className={styles.copy}>
-              Ci chces osobne treningy, plan na dialku alebo lepsie nastavenie
-              regeneracie, kazda spolupraca je postavena na jasnom postupe a realnom
-              progrese.
+              Ci chces osobne treningy, plan na dialku alebo lepsie
+              nastavenie regeneracie, kazda spolupraca je postavena na
+              jasnom postupe a realnom progrese.
             </p>
           </div>
 
           {services.map((service) => (
             <article key={service.title} className={styles.card}>
-              <div className={styles.icon}>
-                <ServiceIcon icon={service.icon} />
+              <div className={styles.cardTop}>
+                <div className={styles.icon}>
+                  <ServiceIcon icon={service.icon} />
+                </div>
+                <span className={styles.number}>
+                  {service.number}
+                </span>
               </div>
               <p className={styles.label}>{service.label}</p>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
+              <a href="#contact" className={styles.cardCta}>
+                Rezervovať <span aria-hidden="true">→</span>
+              </a>
             </article>
           ))}
         </div>
